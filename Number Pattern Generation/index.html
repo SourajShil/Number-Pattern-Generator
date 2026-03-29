@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Number Pattern Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="title">
+      <h1>Number Pattern Generator</h1>
+      <p>Choose a pattern, set rows, and hit Generate.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="pattern">Pattern</label>
+      <select id="pattern">
+        <option value="right">Right Triangle</option>
+        <option value="left">Left Triangle</option>
+        <option value="pyramid">Pyramid</option>
+        <option value="inv-pyramid">Inverted Pyramid</option>
+        <option value="diamond">Diamond</option>
+        <option value="pascal">Pascal's Triangle</option>
+        <option value="floyd">Floyd's Triangle</option>
+        <option value="square">Number Square</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="rows">Number of Rows (1 – 10)</label>
+      <input type="number" id="rows" value="5" min="1" max="10" />
+    </div>
+
+    <button class="btn" onclick="generate()">Generate</button>
+
+    <div class="output-title">Output</div>
+    <div class="output-box" id="output">
+      <span class="placeholder">Pattern will appear here…</span>
+    </div>
+
+  </div>
+
+  <script>
+    function generate() {
+      const type = document.getElementById('pattern').value;
+      const n = Math.min(10, Math.max(1, parseInt(document.getElementById('rows').value) || 5));
+      document.getElementById('rows').value = n;
+
+      let lines = [];
+
+      if (type === 'right') {
+        for (let i = 1; i <= n; i++) {
+          let r = '';
+          for (let j = 1; j <= i; j++) r += j + ' ';
+          lines.push(r.trim());
+        }
+      } else if (type === 'left') {
+        for (let i = 1; i <= n; i++) {
+          let r = '  '.repeat(n - i);
+          for (let j = 1; j <= i; j++) r += j + ' ';
+          lines.push(r.trimEnd());
+        }
+      } else if (type === 'pyramid') {
+        for (let i = 1; i <= n; i++) {
+          let r = ' '.repeat(n - i);
+          for (let j = i; j >= 1; j--) r += j + ' ';
+          for (let j = 2; j <= i; j++) r += j + ' ';
+          lines.push(r.trimEnd());
+        }
+      } else if (type === 'inv-pyramid') {
+        for (let i = n; i >= 1; i--) {
+          let r = ' '.repeat(n - i);
+          for (let j = i; j >= 1; j--) r += j + ' ';
+          for (let j = 2; j <= i; j++) r += j + ' ';
+          lines.push(r.trimEnd());
+        }
+      } else if (type === 'diamond') {
+        for (let i = 1; i <= n; i++) {
+          let r = ' '.repeat(n - i);
+          for (let j = i; j >= 1; j--) r += j + ' ';
+          for (let j = 2; j <= i; j++) r += j + ' ';
+          lines.push(r.trimEnd());
+        }
+        for (let i = n - 1; i >= 1; i--) {
+          let r = ' '.repeat(n - i);
+          for (let j = i; j >= 1; j--) r += j + ' ';
+          for (let j = 2; j <= i; j++) r += j + ' ';
+          lines.push(r.trimEnd());
+        }
+      } else if (type === 'pascal') {
+        let arr = [1];
+        for (let i = 0; i < n; i++) {
+          let r = ' '.repeat((n - i - 1) * 2) + arr.join('   ');
+          lines.push(r);
+          const next = [1];
+          for (let j = 1; j < arr.length; j++) next.push(arr[j - 1] + arr[j]);
+          next.push(1);
+          arr = next;
+        }
+      } else if (type === 'floyd') {
+        let num = 1;
+        for (let i = 1; i <= n; i++) {
+          let r = '';
+          for (let j = 0; j < i; j++) r += num++ + ' ';
+          lines.push(r.trim());
+        }
+      } else if (type === 'square') {
+        for (let i = 1; i <= n; i++) {
+          let r = '';
+          for (let j = 1; j <= n; j++) r += ((i * j) % n || n) + ' ';
+          lines.push(r.trim());
+        }
+      }
+
+      document.getElementById('output').innerHTML =
+        '<pre>' + lines.join('\n') + '</pre>';
+    }
+  </script>
+
+</body>
+</html>

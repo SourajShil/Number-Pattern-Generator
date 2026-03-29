@@ -1,0 +1,135 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f6fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 16px;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 460px;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.title h1 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.title p {
+  font-size: 0.82rem;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #333;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+select:focus,
+input[type="number"]:focus {
+  border-color: #5c6bc0;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 11px;
+  margin-top: 4px;
+  background-color: #5c6bc0;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #4a5ab0;
+}
+
+/* Output section */
+.output-title {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 22px 0 8px;
+}
+
+.output-box {
+  background: #f9f9fb;
+  border: 1.5px solid #e8e8ec;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.output-box pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #3a3a5c;
+  text-align: left;
+  display: inline-block;
+}
+
+.placeholder {
+  font-size: 0.83rem;
+  color: #bbb;
+}
